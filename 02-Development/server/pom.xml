@@ -41,6 +41,7 @@
         <!-- swagger 文档依赖项 -->
         <dependency>
             <groupId>io.springfox</groupId>
+<<<<<<< HEAD
             <artifactId>springfox-boot-starter</artifactId>
             <version>3.0.0</version>
         </dependency>
@@ -68,17 +69,52 @@
             <version>3.18.3</version>
         </dependency>
 
+=======
+            <artifactId>springfox-swagger2</artifactId>
+            <version>3.0.0</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/io.springfox/springfox-swagger-ui -->
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger-ui</artifactId>
+            <version>3.0.0</version>
+        </dependency>
+
+        <!-- 数据库集成  -->
+>>>>>>> 22b329726db59b146e24a15d71b9d50a8ad411d4
         <!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
+<<<<<<< HEAD
             <version>8.0.28</version>
         </dependency>
+=======
+            <version>8.0.27</version>
+        </dependency>
+
+>>>>>>> 22b329726db59b146e24a15d71b9d50a8ad411d4
         <!-- https://mvnrepository.com/artifact/org.mybatis.spring.boot/mybatis-spring-boot-starter -->
         <dependency>
             <groupId>org.mybatis.spring.boot</groupId>
             <artifactId>mybatis-spring-boot-starter</artifactId>
             <version>2.2.1</version>
+<<<<<<< HEAD
+=======
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/com.alibaba/druid -->
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>druid</artifactId>
+            <version>1.2.8</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/com.alibaba/druid-spring-boot-starter -->
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>druid-spring-boot-starter</artifactId>
+            <version>1.2.8</version>
+>>>>>>> 22b329726db59b146e24a15d71b9d50a8ad411d4
         </dependency>
 
     </dependencies>
