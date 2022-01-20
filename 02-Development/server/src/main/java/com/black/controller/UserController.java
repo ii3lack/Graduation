@@ -5,9 +5,9 @@ import com.black.service.UserService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.annotation.Resource;
 import java.util.List;
 
 /**
@@ -17,7 +17,7 @@ import java.util.List;
 @RequestMapping("/user")
 @Api(value="用户controller",tags={"用户操作接口"})
 public class UserController {
-    @Autowired
+    @Resource
     private UserService userService;
 
     @ApiOperation(value="测试查询用户",tags={"测试查询用户"},notes="测试查询信息")
