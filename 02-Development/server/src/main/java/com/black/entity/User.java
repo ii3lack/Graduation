@@ -17,7 +17,7 @@ import org.springframework.stereotype.Component;
 @ConfigurationProperties(prefix = "user")
 @PropertySource(value = { "classpath:application.yml" })
 public class User {
-    private Long userId;
+    private Integer userId;
     private String userEmail;
     private String userName;
     private String userPassword;

@@ -15,18 +15,21 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
  */
 @Configuration
 @EnableSwagger2
-public class SwaggerConfig {
+public class SwaggerConfig{
     @Bean
     public Docket createRestApi(){
-        return new Docket(DocumentationType.SWAGGER_2).apiInfo(apiInfo())
+        return new Docket(DocumentationType.SWAGGER_2)
                 .select()
                 .apis(RequestHandlerSelectors.any())
-                .paths(PathSelectors.any()).build();
+                .paths(PathSelectors.any())
+                .build()
+                .apiInfo(apiInfo());
     }
 
     private ApiInfo apiInfo(){
         return new ApiInfoBuilder()
                 .title("KOI API Doc")
+                .termsOfServiceUrl("http://localhost:8080/")
                 .description("This is a restful api document of KOI.")
                 .version("1.0")
                 .build();

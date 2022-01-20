@@ -6,9 +6,9 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 /**
  * @author Black
@@ -19,6 +19,13 @@ import org.springframework.web.bind.annotation.RestController;
 public class UserController {
     @Autowired
     private UserService userService;
+
+    @ApiOperation(value="测试查询用户",tags={"测试查询用户"},notes="测试查询信息")
+    @GetMapping("/testFindUser")
+    @ResponseBody
+    public List<User> testFindUser(){
+        return userService.testFindUser();
+    }
 
     @ApiOperation(value="注册用户",tags={"注册用户"},notes="输入用户信息")
     @PostMapping ("/registerUser")
