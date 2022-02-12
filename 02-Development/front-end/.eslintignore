@@ -1,2 +1,5 @@
-dist
-public
+build/
+dist/
+**/*.html
+**/*.css
+**/*.svg
