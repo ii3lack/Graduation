@@ -20,11 +20,11 @@
 			"@/*": ["./src/*"],
 			"@assets/*": ["./src/assets/*"],
 			"@components/*": ["./src/components/*"],
-			// "@interfaces/*": ["./src/interfaces/*"],
+			"@interfaces/*": ["./src/interfaces/*"],
 			// "@modules/*": ["./src/modules/*"],
 			// "@pages/*": ["./src/pages/*"],
 			// "@router/*": ["./src/router/*"],
-			// "@services/*": ["./src/services/*"],
+			"@services/*": ["./src/services/*"],
 			"@store/*": ["./src/store/*"],
 			"@utils/*": ["./src/utils/*"]
 		}

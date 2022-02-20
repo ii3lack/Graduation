@@ -6,7 +6,6 @@ import com.black.service.UserService;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
-import java.util.List;
 
 /**
  * @author Black
@@ -17,12 +16,17 @@ public class UserServiceImpl implements UserService {
     private UserMapper userMapper;
 
     @Override
-    public List<User> testFindUser() {
-        return userMapper.testFindUser();
+    public User judgeUser(String userName) {
+        return userMapper.judgeUser(userName);
     }
 
     @Override
-    public Boolean registerUser(User user) {
-        return userMapper.registerUser(user);
+    public int registerUser(String userEmail,String userName, String userPassword) {
+        return userMapper.registerUser(userEmail, userName, userPassword);
+    }
+
+    @Override
+    public User loginUser(String userEmail, String userPassword) {
+        return userMapper.loginUser(userEmail, userPassword);
     }
 }

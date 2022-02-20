@@ -2,6 +2,7 @@ package com.black.controller;
 
 import com.black.entity.User;
 import com.black.service.UserService;
+import com.black.utils.Result;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
@@ -20,16 +21,29 @@ public class UserController {
     @Resource
     private UserService userService;
 
-    @ApiOperation(value="测试查询用户",tags={"测试查询用户"},notes="测试查询信息")
-    @GetMapping("/testFindUser")
-    @ResponseBody
-    public List<User> testFindUser(){
-        return userService.testFindUser();
+    @PostMapping ("/registerUser")
+    public Result registerUser(String userEmail, String userName, String userPassword){
+        User retUser =  userService.judgeUser(userName);
+        if(retUser.getUserName() != null){
+            return Result.error().message("已有此用户");
+        }else {
+            int retRegister =  userService.registerUser(userEmail, userName, userPassword);
+            if (retRegister == 1){
+                return Result.ok().message("注册成功");
+
+            }else {
+                return  Result.error().message("注册失败");
+            }
+        }
     }
 
-    @ApiOperation(value="注册用户",tags={"注册用户"},notes="输入用户信息")
-    @PostMapping ("/registerUser")
-    public Boolean registerUser(@ApiParam(name="User",value="用户信息")User user){
-        return userService.registerUser(user);
+    @PostMapping ("/loginUser")
+    public Result loginUser(String userEmail, String userPassword){
+        User userResult =  userService.loginUser(userEmail, userPassword);
+        if(userResult.getUserEmail() != null){
+            return Result.ok().message("登陆成功");
+        }else {
+            return  Result.error().message("登陆失败，用户名或者密码错误");
+        }
     }
 }

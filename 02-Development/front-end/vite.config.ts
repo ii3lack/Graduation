@@ -14,11 +14,11 @@ export default defineConfig({
 			'@': `${reslove('./src/')}`,
 			'@assets': `${reslove('./src/assets/')}`,
 			'@components': `${reslove('./src/components/')}`,
-			// '@interfaces': `${reslove('./src/interfaces/')}`,
+			'@interfaces': `${reslove('./src/interfaces/')}`,
 			// '@modules': `${reslove('./src/modules/')}`,
 			'@pages': `${reslove('./src/pages/')}`,
 			// '@router': `${reslove('./src/router/')}`,
-			// '@services': `${reslove('./src/services/')}`,
+			'@services': `${reslove('./src/services/')}`,
 			'@store': `${reslove('./src/store')}`,
 			'@utils': `${reslove('./src/utils/')}`
 		}

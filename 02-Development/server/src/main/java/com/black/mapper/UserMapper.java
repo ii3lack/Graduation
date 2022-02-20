@@ -11,15 +11,26 @@ import java.util.List;
 @Mapper
 public interface UserMapper {
     /**
-     * 测试查询用户
-     * @return 返回用户列表
+     * 查询用户是否存在
+     * @param userName 查询的用户名
+     * @return 查询结果
      */
-    List<User> testFindUser();
+    User judgeUser(String userName);
 
     /**
      * 注册用户接口
-     * @param user 注册的用户信息
-     * @return boolean 是否注册成功
+     * @param userEmail 用户邮箱
+     * @param userName 用户名
+     * @param userPassword 用户密码
+     * @return 注册结果
      */
-    Boolean registerUser(User user);
+    int registerUser(String userEmail,String userName, String userPassword);
+
+    /**
+     * 登录用户
+     * @param userEmail 用户邮箱
+     * @param userPassword 用户密码
+     * @return 登陆结果
+     */
+    User loginUser(String userEmail, String userPassword);
 }
