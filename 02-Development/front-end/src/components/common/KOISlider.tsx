@@ -8,16 +8,39 @@ import {
 } from '@douyinfe/semi-icons'
 import { store } from '@/store'
 import {
+	Action,
 	toBookAction,
 	toDataAction,
 	toHomeAction,
 	toSettingAction
 } from '@/store/homeState'
 import { useDispatch } from 'react-redux'
+// import { browserHistory } from 'react-router'
 
-const KOISlider: React.FC = () => {
+interface Props {
+	type: any
+}
+
+const KOISlider: React.FC<Props> = (props) => {
 	const { Sider } = Layout
 	const dispatch = useDispatch()
+	// console.log(props)
+
+	const changePages = (action: Action) => {
+		const stateLogin = store.getState().loginWeb.loginState
+		// console.log(stateLogin)
+		switch (stateLogin) {
+			case true:
+				dispatch(action)
+				break
+			case false:
+				// browserHistory.push('/sign')
+				props.type.push('/sign')
+				break
+			default:
+				break
+		}
+	}
 
 	return (
 		<Sider style={{ backgroundColor: 'var(--semi-color-bg-1)' }}>
@@ -29,25 +52,25 @@ const KOISlider: React.FC = () => {
 						itemKey: 'Home',
 						text: '首页',
 						icon: <IconHome size="large" />,
-						onClick: () => dispatch(toHomeAction)
+						onClick: () => changePages(toHomeAction)
 					},
 					{
 						itemKey: 'Histogram',
 						text: '理财可视化',
 						icon: <IconHistogram size="large" />,
-						onClick: () => dispatch(toDataAction)
+						onClick: () => changePages(toDataAction)
 					},
 					{
 						itemKey: 'Live',
 						text: '记账',
 						icon: <IconLive size="large" />,
-						onClick: () => dispatch(toBookAction)
+						onClick: () => changePages(toBookAction)
 					},
 					{
 						itemKey: 'Setting',
 						text: '设置',
 						icon: <IconSetting size="large" />,
-						onClick: () => dispatch(toSettingAction)
+						onClick: () => changePages(toSettingAction)
 					}
 				]}
 				header={{

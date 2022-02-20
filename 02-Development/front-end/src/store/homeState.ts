@@ -17,7 +17,7 @@ interface ReduxState {
 	homeState: HomeState
 }
 
-interface Action {
+export interface Action {
 	type: HomeState
 }
 

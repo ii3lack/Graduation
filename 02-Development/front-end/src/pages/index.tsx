@@ -1,5 +1,4 @@
-/* eslint-disable @typescript-eslint/explicit-member-accessibility */
-import React, { Component } from 'react'
+import React from 'react'
 import {
 	KOIContentContainer,
 	KOIFooter,
@@ -9,6 +8,7 @@ import {
 import { Layout } from '@douyinfe/semi-ui'
 
 interface Props {
+	history: any
 	loginState: boolean
 	loginAction: () => any
 	exitAction: () => any
@@ -33,7 +33,7 @@ const AppHome: React.FC<Props> = (props) => {
 
 	return (
 		<Layout style={style}>
-			<KOISlider />
+			<KOISlider type={props.history} />
 			<Layout>
 				<KOIHeader />
 				<KOIContentContainer />
