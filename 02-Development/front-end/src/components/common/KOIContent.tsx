@@ -1,7 +1,38 @@
 import React from 'react'
 import { Layout, Breadcrumb, Skeleton } from '@douyinfe/semi-ui'
+import {
+	HomeState,
+	toHomeAction,
+	toBookAction,
+	toSettingAction,
+	toDataAction
+} from '@/store/homeState'
+import { connect } from 'react-redux'
 
-const KOIContent: React.FC = () => {
+interface Props {
+	homeState: HomeState
+	toHomeAction: () => any
+	toBookAction: () => any
+	toSettingAction: () => any
+	toDataAction: () => any
+}
+
+const mapStateToProps = (state: any) => {
+	return {
+		homeState: state.homeCurrent.homeState,
+		loginState: state.loginWeb.loginState
+	}
+}
+
+const mapDispatchToProps = (dispatch: any) => ({
+	toHomeAction: () => dispatch(toHomeAction),
+	toBookAction: () => dispatch(toBookAction),
+	toSettingAction: () => dispatch(toSettingAction),
+	toDataAction: () => dispatch(toDataAction)
+})
+
+const KOIContent: React.FC<Props> = (props) => {
+	// console.log(props)
 	const { Content } = Layout
 
 	return (
@@ -11,17 +42,6 @@ const KOIContent: React.FC = () => {
 				backgroundColor: 'var(--semi-color-bg-0)'
 			}}
 		>
-			<Breadcrumb
-				style={{
-					marginBottom: '24px'
-				}}
-				routes={[
-					'首页',
-					'当这个页面标题很长时需要省略',
-					'上一页',
-					'详情页'
-				]}
-			/>
 			<div
 				style={{
 					borderRadius: '10px',
@@ -32,9 +52,9 @@ const KOIContent: React.FC = () => {
 			>
 				<Skeleton
 					placeholder={<Skeleton.Paragraph rows={2} />}
-					loading={true}
+					loading={false}
 				>
-					<p>Hi, Bytedance dance dance.</p>
+					<p>{props.homeState}</p>
 					<p>Hi, Bytedance dance dance.</p>
 				</Skeleton>
 			</div>
@@ -42,4 +62,9 @@ const KOIContent: React.FC = () => {
 	)
 }
 
-export default KOIContent
+const KOIContentContainer = connect(
+	mapStateToProps,
+	mapDispatchToProps
+)(KOIContent)
+
+export default KOIContentContainer

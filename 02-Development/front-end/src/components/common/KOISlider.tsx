@@ -6,9 +6,18 @@ import {
 	IconLive,
 	IconSetting
 } from '@douyinfe/semi-icons'
+import { store } from '@/store'
+import {
+	toBookAction,
+	toDataAction,
+	toHomeAction,
+	toSettingAction
+} from '@/store/homeState'
+import { useDispatch } from 'react-redux'
 
 const KOISlider: React.FC = () => {
 	const { Sider } = Layout
+	const dispatch = useDispatch()
 
 	return (
 		<Sider style={{ backgroundColor: 'var(--semi-color-bg-1)' }}>
@@ -19,22 +28,26 @@ const KOISlider: React.FC = () => {
 					{
 						itemKey: 'Home',
 						text: '首页',
-						icon: <IconHome size="large" />
+						icon: <IconHome size="large" />,
+						onClick: () => dispatch(toHomeAction)
 					},
 					{
 						itemKey: 'Histogram',
 						text: '理财可视化',
-						icon: <IconHistogram size="large" />
+						icon: <IconHistogram size="large" />,
+						onClick: () => dispatch(toDataAction)
 					},
 					{
 						itemKey: 'Live',
 						text: '记账',
-						icon: <IconLive size="large" />
+						icon: <IconLive size="large" />,
+						onClick: () => dispatch(toBookAction)
 					},
 					{
 						itemKey: 'Setting',
 						text: '设置',
-						icon: <IconSetting size="large" />
+						icon: <IconSetting size="large" />,
+						onClick: () => dispatch(toSettingAction)
 					}
 				]}
 				header={{

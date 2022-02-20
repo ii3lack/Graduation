@@ -1,26 +1,18 @@
 import React from 'react'
+import { createBrowserHistory } from 'history'
 import { Provider } from 'react-redux'
 import { store } from '@/store/index'
-import {
-	KOIContent,
-	KOIFooter,
-	KOIHeader,
-	KOISlider
-} from '@components/common/index'
-import { Layout } from '@douyinfe/semi-ui'
+import { Router } from 'react-router-dom'
+import Routers from '@/router/index'
+
+const history = createBrowserHistory()
 
 const App: React.FC = () => {
-	const style = { border: '1px solid var(--semi-color-border)' }
 	return (
 		<Provider store={store}>
-			<Layout style={style}>
-				<KOISlider />
-				<Layout>
-					<KOIHeader />
-					<KOIContent />
-					<KOIFooter />
-				</Layout>
-			</Layout>
+			<Router history={history}>
+				<Routers />
+			</Router>
 		</Provider>
 	)
 }

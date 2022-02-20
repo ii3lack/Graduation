@@ -20,9 +20,9 @@ const initData = {
 const loginWeb = (state: ReduxState = initData, action: Action) => {
 	switch (action.type) {
 		case LOGINSUCCESS:
-			return { loginState: !state.loginState }
+			return { loginState: true }
 		case EXITLOGIN:
-			return { loginState: !state.loginState }
+			return { loginState: false }
 		default:
 			return state
 	}

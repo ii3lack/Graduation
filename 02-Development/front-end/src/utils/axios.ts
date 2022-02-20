@@ -56,7 +56,7 @@ class HttpRequest {
 			},
 			(error) => {
 				console.log('err' + error)
-				Notification.open({
+				Notification.error({
 					title: '请求提示',
 					content: `出现了错误${error}`,
 					duration: 3

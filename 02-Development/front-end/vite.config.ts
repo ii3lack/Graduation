@@ -17,7 +17,7 @@ export default defineConfig({
 			'@interfaces': `${reslove('./src/interfaces/')}`,
 			// '@modules': `${reslove('./src/modules/')}`,
 			'@pages': `${reslove('./src/pages/')}`,
-			// '@router': `${reslove('./src/router/')}`,
+			'@router': `${reslove('./src/router/')}`,
 			'@services': `${reslove('./src/services/')}`,
 			'@store': `${reslove('./src/store')}`,
 			'@utils': `${reslove('./src/utils/')}`
