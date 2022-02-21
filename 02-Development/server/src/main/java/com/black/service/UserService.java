@@ -23,7 +23,7 @@ public interface UserService {
      * @param userPassword 用户密码
      * @return 注册结果
      */
-    int registerUser(String userEmail,String userName, String userPassword);
+    void registerUser(String userEmail,String userName, String userPassword);
 
     /**
      * 登录用户

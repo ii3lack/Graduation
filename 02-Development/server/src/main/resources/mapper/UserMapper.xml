@@ -5,7 +5,7 @@
         SELECT * from user where user_name = #{userName} ORDER BY user_name DESC LIMIT 1
     </select>
 
-    <insert id="registerUser" parameterType="java.lang.String" >
+    <insert id="registerUser" parameterType="java.lang.String">
         INSERT INTO user ( user_email, user_name,user_password)
         VALUES
             ( #{userEmail},#{userName}, #{userPassword});
