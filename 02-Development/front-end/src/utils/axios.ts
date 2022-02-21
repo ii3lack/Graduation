@@ -9,7 +9,7 @@ class HttpRequest {
 	private readonly baseUrl: string
 
 	constructor() {
-		this.baseUrl = 'http://localhost:3000'
+		this.baseUrl = 'http://localhost:8080'
 	}
 
 	getInsideConfig() {

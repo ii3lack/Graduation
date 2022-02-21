@@ -1,5 +1,5 @@
 import React from 'react'
-import { Layout, Nav, Button, Avatar, Dropdown } from '@douyinfe/semi-ui'
+import { Layout, Nav, Button, Avatar } from '@douyinfe/semi-ui'
 import { IconBell, IconHelpCircle } from '@douyinfe/semi-icons'
 
 const KOIHeader: React.FC = () => {
@@ -28,17 +28,9 @@ const KOIHeader: React.FC = () => {
 							}}
 						/>
 
-						<Dropdown
-							render={
-								<Dropdown.Menu>
-									<Dropdown.Item>登录</Dropdown.Item>
-								</Dropdown.Menu>
-							}
-						>
-							<Avatar color="orange" size="small">
-								YJ
-							</Avatar>
-						</Dropdown>
+						<Avatar color="orange" size="small">
+							YJ
+						</Avatar>
 					</>
 				}
 			/>

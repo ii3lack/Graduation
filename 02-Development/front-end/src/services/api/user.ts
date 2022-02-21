@@ -1,9 +1,14 @@
 import http from '@utils/axios'
 
-export const loginApi = (params: any) => {
+export interface LoginParams {
+	userEmail: string
+	userPassword: string
+}
+
+export const loginApi = (params: LoginParams) => {
 	return http.request({
 		data: params,
 		method: 'post',
-		url: '/users/login'
+		url: '/user/loginUser'
 	})
 }
