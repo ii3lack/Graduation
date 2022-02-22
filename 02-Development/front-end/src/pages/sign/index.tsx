@@ -3,54 +3,36 @@ import { Form, Toast, Button, Typography } from '@douyinfe/semi-ui'
 import { LoginParams, loginApi } from '@/services/api/user'
 
 import '@assets/style/sign.scss'
+import { AxiosResponse } from 'axios'
+import { changeResult } from '@/services/func/httpUtils'
 
-const SignHome: React.FC = () => {
+interface ResponseResult {
+	success: boolean
+	status: number
+	message: string
+	data: Object
+}
+
+interface History {
+	history: any
+}
+
+const SignHome: React.FC<History> = (props) => {
 	const { Text } = Typography
-
-	const handleSubmit = (values: any) => {
-		// console.log(values)
+	// console.log(props)
+	const { history } = props
+	const handleSubmit = async (values: any) => {
 		const params: LoginParams = {
 			userEmail: values.userEmail,
 			userPassword: values.userPassword
 		}
-		// Toast.info('表单已提交')
-		loginApi(params).then((res) => {
-			console.log(params)
-
-			switch (res.data) {
-				case true:
-					console.log(res)
-					// message.success({ content: '登陆成功', duration: 5 })
-					// navigate('/home')
-					break
-				case false:
-					console.log(res)
-					// message.success({
-					// 	content: '登陆失败，用户名或者密码错误',
-					// 	duration: 5,
-					// })
-					break
-			}
-		})
-	}
-
-	const loginWeb = (values: LoginParams) => {
-		loginApi(values).then((res) => {
-			switch (res.data) {
-				case true:
-					console.log(res)
-					// message.success({ content: '登陆成功', duration: 5 })
-					// navigate('/home')
-					break
-				case false:
-					console.log(res)
-					// message.success({
-					// 	content: '登陆失败，用户名或者密码错误',
-					// 	duration: 5,
-					// })
-					break
-			}
-		})
+		const result = changeResult(await loginApi(params))
+		console.log(result.message)
+		if (result.message === '登陆成功') {
+			history.push('/')
+		} else {
+			Toast.info('登陆失败，用户名或密码错误')
+		}
 	}
 
 	return (
@@ -73,6 +55,7 @@ const SignHome: React.FC = () => {
 							field="userPassword"
 							label="密码"
 							mode="password"
+							minLength={6}
 							style={{ width: '100%' }}
 							placeholder="请输入您的密码"
 						/>

@@ -5,10 +5,4 @@ interface ResponseData {
 	message: string
 }
 
-interface MockOptions{
-	url: string
-	type: string
-	body: string
-}
-
-export type { ResponseData, MockOptions }
+export type { ResponseData }

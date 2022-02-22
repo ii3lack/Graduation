@@ -93,13 +93,6 @@ const handleNetError = (value: unknown) => {
 				duration: 3
 			})
 			break
-		default:
-			msg = `连接出错(${value})!`
-			Notification.warning({
-				title: title,
-				content: msg,
-				duration: 3
-			})
 	}
 }
 

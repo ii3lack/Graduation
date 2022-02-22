@@ -1,11 +1,32 @@
 import React from 'react'
 import { Form, Toast, Button } from '@douyinfe/semi-ui'
+import { regesterApi, RegesterParams } from '@/services/api/user'
 import '@assets/style/sign.scss'
+import { changeResult } from '@/services/func/httpUtils'
 
-const SignUp: React.FC = () => {
-	const handleSubmit = (values: any) => {
-		console.log(values)
-		Toast.info('表单已提交')
+interface History {
+	history: any
+}
+
+const SignUp: React.FC<History> = (props) => {
+	const handleSubmit = async (values: any) => {
+		// console.log(values)
+		const { history } = props
+		if (values.userPassword !== values.passwordChecked) {
+			Toast.info('两次密码输入不一致,请重新输入')
+		} else {
+			const params: RegesterParams = {
+				userEmail: values.userEmail,
+				userName: values.userName,
+				userPassword: values.userPassword
+			}
+			const result = changeResult(await regesterApi(params))
+			if (result.message === '注册成功') {
+				history.push('/')
+			} else {
+				Toast.info('用户名已存在')
+			}
+		}
 	}
 	return (
 		<div className="container">
@@ -18,19 +39,19 @@ const SignUp: React.FC = () => {
 				{({ formState, values, formApi }) => (
 					<>
 						<Form.Input
-							field="name"
+							field="userName"
 							label="用户名"
 							style={{ width: '100%' }}
 							placeholder="请输入您的用户名"
 						/>
 						<Form.Input
-							field="email"
+							field="userEmail"
 							label="邮箱号"
 							style={{ width: '100%' }}
 							placeholder="请输入您的邮箱号"
 						/>
 						<Form.Input
-							field="password"
+							field="userPassword"
 							label="密码"
 							mode="password"
 							style={{ width: '100%' }}
