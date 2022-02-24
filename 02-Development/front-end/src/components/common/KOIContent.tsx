@@ -1,5 +1,5 @@
 import React from 'react'
-import { Layout, Breadcrumb, Skeleton } from '@douyinfe/semi-ui'
+import { Layout, Skeleton } from '@douyinfe/semi-ui'
 import {
 	HomeState,
 	toHomeAction,
@@ -8,6 +8,10 @@ import {
 	toDataAction
 } from '@/store/homeState'
 import { connect } from 'react-redux'
+import BookComponent from '@pages/bookKeeping/BookComponent'
+import DataComponent from '@pages/data/DataComponent'
+import SettingComponent from '@/pages/setting/SettingComponent'
+import HomeComponent from '@/pages/home/homeComponent'
 
 interface Props {
 	homeState: HomeState
@@ -32,7 +36,6 @@ const mapDispatchToProps = (dispatch: any) => ({
 })
 
 const KOIContent: React.FC<Props> = (props) => {
-	// console.log(props)
 	const { Content } = Layout
 
 	return (
@@ -42,22 +45,10 @@ const KOIContent: React.FC<Props> = (props) => {
 				backgroundColor: 'var(--semi-color-bg-0)'
 			}}
 		>
-			<div
-				style={{
-					borderRadius: '10px',
-					border: '1px solid var(--semi-color-border)',
-					height: '376px',
-					padding: '32px'
-				}}
-			>
-				<Skeleton
-					placeholder={<Skeleton.Paragraph rows={2} />}
-					loading={false}
-				>
-					<p>{props.homeState}</p>
-					<p>Hi, Bytedance dance dance.</p>
-				</Skeleton>
-			</div>
+			<HomeComponent homeState={props.homeState} />
+			<BookComponent homeState={props.homeState} />
+			<DataComponent homeState={props.homeState} />
+			<SettingComponent homeState={props.homeState} />
 		</Content>
 	)
 }

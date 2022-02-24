@@ -34,7 +34,7 @@ const SignUp: React.FC<History> = (props) => {
 
 			<Form
 				onSubmit={(values) => handleSubmit(values)}
-				style={{ width: 400 }}
+				style={{ width: 400 }} 
 			>
 				{({ formState, values, formApi }) => (
 					<>

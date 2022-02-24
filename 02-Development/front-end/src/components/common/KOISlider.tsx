@@ -55,16 +55,16 @@ const KOISlider: React.FC<Props> = (props) => {
 						onClick: () => changePages(toHomeAction)
 					},
 					{
-						itemKey: 'Histogram',
-						text: '理财可视化',
-						icon: <IconHistogram size="large" />,
-						onClick: () => changePages(toDataAction)
-					},
-					{
 						itemKey: 'Live',
 						text: '记账',
 						icon: <IconLive size="large" />,
 						onClick: () => changePages(toBookAction)
+					},
+					{
+						itemKey: 'Histogram',
+						text: '理财可视化',
+						icon: <IconHistogram size="large" />,
+						onClick: () => changePages(toDataAction)
 					},
 					{
 						itemKey: 'Setting',
