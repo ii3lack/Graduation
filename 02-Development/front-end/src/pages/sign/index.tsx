@@ -1,10 +1,10 @@
 import React from 'react'
 import { Form, Toast, Button, Typography } from '@douyinfe/semi-ui'
 import { LoginParams, loginApi } from '@/services/api/user'
-
 import '@assets/style/sign.scss'
-import { AxiosResponse } from 'axios'
 import { changeResult } from '@/services/func/httpUtils'
+import { useDispatch } from 'react-redux'
+import { loginAction } from '@/store/login'
 
 interface ResponseResult {
 	success: boolean
@@ -21,6 +21,8 @@ const SignHome: React.FC<History> = (props) => {
 	const { Text } = Typography
 	// console.log(props)
 	const { history } = props
+	const dispatch = useDispatch()
+	
 	const handleSubmit = async (values: any) => {
 		const params: LoginParams = {
 			userEmail: values.userEmail,
@@ -29,6 +31,7 @@ const SignHome: React.FC<History> = (props) => {
 		const result = changeResult(await loginApi(params))
 		console.log(result.message)
 		if (result.message === '登陆成功') {
+			dispatch(loginAction)
 			history.push('/')
 		} else {
 			Toast.info('登陆失败，用户名或密码错误')

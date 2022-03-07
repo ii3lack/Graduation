@@ -3,6 +3,8 @@ import { Form, Toast, Button } from '@douyinfe/semi-ui'
 import { regesterApi, RegesterParams } from '@/services/api/user'
 import '@assets/style/sign.scss'
 import { changeResult } from '@/services/func/httpUtils'
+import { useDispatch } from 'react-redux'
+import { loginAction } from '@/store/login'
 
 interface History {
 	history: any
@@ -12,6 +14,8 @@ const SignUp: React.FC<History> = (props) => {
 	const handleSubmit = async (values: any) => {
 		// console.log(values)
 		const { history } = props
+		const dispatch = useDispatch()
+
 		if (values.userPassword !== values.passwordChecked) {
 			Toast.info('两次密码输入不一致,请重新输入')
 		} else {
@@ -22,6 +26,7 @@ const SignUp: React.FC<History> = (props) => {
 			}
 			const result = changeResult(await regesterApi(params))
 			if (result.message === '注册成功') {
+				dispatch(loginAction)
 				history.push('/')
 			} else {
 				Toast.info('用户名已存在')
@@ -34,7 +39,7 @@ const SignUp: React.FC<History> = (props) => {
 
 			<Form
 				onSubmit={(values) => handleSubmit(values)}
-				style={{ width: 400 }} 
+				style={{ width: 400 }}
 			>
 				{({ formState, values, formApi }) => (
 					<>

@@ -29,4 +29,14 @@ public class UserServiceImpl implements UserService {
     public User loginUser(String userEmail, String userPassword) {
         return userMapper.loginUser(userEmail, userPassword);
     }
+
+    @Override
+    public void updateAvatar(String userEmail, String avatarUrl) {
+        userMapper.updateAvatar(userEmail, avatarUrl);
+    }
+
+    @Override
+    public void updatePassword(String userEmail, String userPassword) {
+        userMapper.updatePassword(userEmail, userPassword);
+    }
 }

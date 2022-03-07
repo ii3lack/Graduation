@@ -42,4 +42,18 @@ public class UserController {
             }
         }
     }
+
+
+    @PostMapping("/updateAvatar")
+    public Result updateAvatar(String userEmail, String avatarUrl) {
+        userService.updateAvatar(userEmail, avatarUrl);
+        return Result.ok().message("修改头像成功 ");
+    }
+
+
+    @PostMapping("/updatePassword")
+    public Result updatePassword(String userEmail, String userPassword) {
+        userService.updatePassword(userEmail, userPassword);
+        return Result.ok().message("修改头像成功 ");
+    }
 }

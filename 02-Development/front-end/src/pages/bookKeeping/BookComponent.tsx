@@ -1,6 +1,7 @@
 import React, { CSSProperties } from 'react'
-import { Skeleton } from '@douyinfe/semi-ui'
+import { Skeleton, Button } from '@douyinfe/semi-ui'
 import { HomeState } from '@/store/homeState'
+import '@assets/style/booking.scss'
 
 interface Props {
 	homeState: HomeState
@@ -23,8 +24,22 @@ const BookComponent: React.FC<Props> = (props) => {
 				placeholder={<Skeleton.Paragraph rows={2} />}
 				loading={false}
 			>
-				<p>记账</p>
-				<p>Hi, Bytedance dance dance.</p>
+				<div className="book-container">
+					<div className="booking-box">
+						<img
+							src="src/assets/images/income.gif"
+							className="book-img"
+						/>
+						<Button size='large'>记一笔收入</Button>
+					</div>
+					<div className="booking-box">
+						<img
+							src="src/assets/images/comeout.gif"
+							className="book-img"
+						/>
+						<Button size='large'>记一笔支出</Button>
+					</div>
+				</div>
 			</Skeleton>
 		</div>
 	)
