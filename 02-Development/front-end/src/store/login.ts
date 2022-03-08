@@ -15,7 +15,7 @@ interface Action {
 
 // TODO: 登陆状态更改为false
 const initData = {
-	loginState: false
+	loginState: true
 }
 
 const loginWeb = (state: ReduxState = initData, action: Action) => {

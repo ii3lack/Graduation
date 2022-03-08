@@ -1,5 +1,5 @@
 import React from 'react'
-import { Layout, Skeleton } from '@douyinfe/semi-ui'
+import { Layout } from '@douyinfe/semi-ui'
 import {
 	HomeState,
 	toHomeAction,
@@ -11,7 +11,7 @@ import { connect } from 'react-redux'
 import BookComponent from '@pages/bookKeeping/BookComponent'
 import DataComponent from '@pages/data/DataComponent'
 import SettingComponent from '@/pages/setting/SettingComponent'
-import HomeComponent from '@/pages/home/homeComponent'
+import HomeComponent from '@/pages/home/HomeComponent'
 
 interface Props {
 	homeState: HomeState
