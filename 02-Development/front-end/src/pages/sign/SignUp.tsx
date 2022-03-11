@@ -4,7 +4,7 @@ import { regesterApi, RegesterParams } from '@/services/api/user'
 import '@assets/style/sign.scss'
 import { changeResult } from '@/services/func/httpUtils'
 import { useDispatch } from 'react-redux'
-import { loginAction } from '@/store/login'
+// import { loginAction } from '@/store/login'
 
 interface History {
 	history: any
@@ -14,7 +14,7 @@ const SignUp: React.FC<History> = (props) => {
 	const handleSubmit = async (values: any) => {
 		// console.log(values)
 		const { history } = props
-		const dispatch = useDispatch()
+		// const dispatch = useDispatch()
 
 		if (values.userPassword !== values.passwordChecked) {
 			Toast.info('两次密码输入不一致,请重新输入')
@@ -25,9 +25,11 @@ const SignUp: React.FC<History> = (props) => {
 				userPassword: values.userPassword
 			}
 			const result = changeResult(await regesterApi(params))
+			console.log(result)
+
 			if (result.message === '注册成功') {
-				dispatch(loginAction)
-				history.push('/')
+				history.push('/sign')
+				// dispatch(loginAction)
 			} else {
 				Toast.info('用户名已存在')
 			}

@@ -1,8 +1,8 @@
-export const LOGINSUCCESS = 'INCREMENT'
-export const EXITLOGIN = 'REDUCE'
+export const LOGINSUCCESS = 'LOGIN'
+export const EXITLOGIN = 'EXIT'
 
-export const loginAction = { type: LOGINSUCCESS, login: true }
-export const exitAction = { type: EXITLOGIN, login: false }
+export const loginAction = { type: LOGINSUCCESS }
+export const exitAction = { type: EXITLOGIN }
 
 interface ReduxState {
 	loginState: boolean
@@ -10,12 +10,12 @@ interface ReduxState {
 
 interface Action {
 	type: string
-	login: boolean
+	login: boolean	
 }
 
 // TODO: 登陆状态更改为false
 const initData = {
-	loginState: true
+	loginState: false
 }
 
 const loginWeb = (state: ReduxState = initData, action: Action) => {
