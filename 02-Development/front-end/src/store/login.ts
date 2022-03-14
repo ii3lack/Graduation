@@ -6,24 +6,33 @@ export const exitAction = { type: EXITLOGIN }
 
 interface ReduxState {
 	loginState: boolean
+	userEmailState: string
 }
 
 interface Action {
 	type: string
-	login: boolean	
+	login: boolean
+	email: string
 }
 
 // TODO: 登陆状态更改为false
 const initData = {
-	loginState: false
+	loginState: false,
+	userEmailState: ''
 }
 
 const loginWeb = (state: ReduxState = initData, action: Action) => {
 	switch (action.type) {
 		case LOGINSUCCESS:
-			return { loginState: true }
+			return {
+				loginState: true,
+				userEmailState: action.email
+			}
 		case EXITLOGIN:
-			return { loginState: false }
+			return {
+				loginState: false,
+				userEmailState: ''
+			}
 		default:
 			return state
 	}
