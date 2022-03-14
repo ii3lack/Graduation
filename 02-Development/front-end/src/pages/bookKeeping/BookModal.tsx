@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useCallback, useState } from 'react'
 import {
 	Modal,
 	InputNumber,
@@ -11,6 +11,10 @@ import {
 } from '@douyinfe/semi-ui'
 import '@assets/style/booking.scss'
 import { TitleModal } from './BookComponent'
+import { store } from '@/store'
+import { IncomeRecordParams } from '@/services/api/bills'
+import { changeResult } from '@/services/func/httpUtils'
+import { incomeRecordAPI } from '@services/api/bills'
 
 interface BookModalProps {
 	title: TitleModal
@@ -33,6 +37,41 @@ enum BILLSTAGS {
 const BookModal: React.FC<BookModalProps> = (props) => {
 	const { title, visible, handleOk, handleCancel } = props
 	const { Title } = Typography
+	const [billsTags, setBillsTags] = useState(BILLSTAGS.RESTAURANT)
+	const [billsDate, setBillsDate] = useState(new Date())
+	const [billsNum, setBillsNum] = useState(100)
+	const [billsInfo, setBillsInfo] = useState('')
+
+	const submit = async (e: React.MouseEvent) => {
+		handleOk(e)
+		const params: IncomeRecordParams = {
+			billsName: title,
+			billsTags: billsTags,
+			billsDate: billsDate.toString(),
+			billsNum: billsNum.toString(),
+			billsInfo: billsInfo,
+			userEmail: store.getState().loginWeb.userEmailState
+		}
+		console.log(params)
+		const result = changeResult(await incomeRecordAPI(params))
+		console.log(result)
+	}
+
+	const changeTags = useCallback((value) => {
+		setBillsTags(value.target.value)
+	}, [])
+
+	const changeDate = useCallback((value) => {
+		setBillsDate(value)
+	}, [])
+
+	const changeNum = useCallback((value) => {
+		setBillsNum(value)
+	}, [])
+
+	const changeInfo = useCallback((value) => {
+		setBillsInfo(value)
+	}, [])
 
 	return (
 		<Modal
@@ -41,7 +80,7 @@ const BookModal: React.FC<BookModalProps> = (props) => {
 			}}
 			title={title}
 			visible={visible}
-			onOk={handleOk}
+			onOk={submit}
 			onCancel={handleCancel}
 			maskClosable={false}
 		>
@@ -54,6 +93,8 @@ const BookModal: React.FC<BookModalProps> = (props) => {
 					buttonSize="large"
 					defaultValue={BILLSTAGS.RESTAURANT}
 					aria-label="单选组合示例"
+					value={billsTags}
+					onChange={changeTags}
 				>
 					<Radio value={BILLSTAGS.RESTAURANT}>餐&emsp;&emsp;饮</Radio>
 					<Radio value={BILLSTAGS.FREEHAPPY}>休闲娱乐</Radio>
@@ -72,9 +113,8 @@ const BookModal: React.FC<BookModalProps> = (props) => {
 					</Title>
 					<DatePicker
 						type="dateTime"
-						timePickerOpts={{
-							scrollItemProps: { cycled: false }
-						}}
+						value={billsDate}
+						onChange={changeDate}
 					/>
 				</div>
 				<div>
@@ -82,9 +122,9 @@ const BookModal: React.FC<BookModalProps> = (props) => {
 						金额
 					</Title>
 					<InputNumber
-						// onChange={log}
-						defaultValue={1000}
+						value={billsNum}
 						min={0}
+						onChange={changeNum}
 						formatter={(value) =>
 							`￥ ${value}`.replace(/\B(?=(\d{3})+(?!\d))/g, ',')
 						}
@@ -96,7 +136,12 @@ const BookModal: React.FC<BookModalProps> = (props) => {
 			<Title heading={6} style={{ margin: '8px 0' }}>
 				备注
 			</Title>
-			<TextArea maxCount={100} showClear />
+			<TextArea
+				maxCount={100}
+				showClear
+				value={billsInfo}
+				onChange={changeInfo}
+			/>
 		</Modal>
 	)
 }

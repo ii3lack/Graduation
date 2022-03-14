@@ -5,6 +5,7 @@ import '@assets/style/sign.scss'
 import { changeResult } from '@/services/func/httpUtils'
 import { useDispatch } from 'react-redux'
 import { loginAction } from '@/store/login'
+import { store } from '@/store'
 
 interface ResponseResult {
 	success: boolean
@@ -22,7 +23,7 @@ const SignHome: React.FC<History> = (props) => {
 	// console.log(props)
 	const { history } = props
 	const dispatch = useDispatch()
-	
+
 	const handleSubmit = async (values: any) => {
 		const params: LoginParams = {
 			userEmail: values.userEmail,
@@ -31,7 +32,8 @@ const SignHome: React.FC<History> = (props) => {
 		const result = changeResult(await loginApi(params))
 		console.log(result.message)
 		if (result.message === '登陆成功') {
-			dispatch(loginAction)
+			dispatch(loginAction(params.userEmail))
+			// console.log(store.getState().loginWeb)
 			history.push('/')
 		} else {
 			Toast.info('登陆失败，用户名或密码错误')

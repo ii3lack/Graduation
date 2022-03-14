@@ -1,8 +1,10 @@
 export const LOGINSUCCESS = 'LOGIN'
 export const EXITLOGIN = 'EXIT'
 
-export const loginAction = { type: LOGINSUCCESS }
-export const exitAction = { type: EXITLOGIN }
+export const loginAction = (email: string) => {
+	return { type: LOGINSUCCESS, login: false, email: email }
+}
+export const exitAction = { type: EXITLOGIN, login: false, email: '' }
 
 interface ReduxState {
 	loginState: boolean

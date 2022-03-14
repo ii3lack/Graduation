@@ -2,8 +2,6 @@ package com.black.service;
 
 import com.black.entity.User;
 
-import java.util.List;
-
 /**
  * @author Black
  */

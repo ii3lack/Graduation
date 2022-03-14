@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.black.mapper.UserMapper">
+<mapper namespace="com.black.mapper.BillsMapper">
     <insert id="incomeRecord" parameterType="java.lang.String">
-        INSERT INTO user ( user_email, user_name,user_password)
+        INSERT INTO bills ( bills_name, bills_tags,bills_date, bills_num, bills_info, user_email)
         VALUES
-            ( #{userEmail},#{userName}, #{userPassword});
+            (#{billsName}, #{billsTags}, #{billsDate}, #{billsNum}, #{billsInfo}, #{userEmail});
     </insert>
 </mapper>
