@@ -17,7 +17,7 @@ import { changeResult } from '@/services/func/httpUtils'
 import { incomeRecordAPI } from '@services/api/bills'
 
 interface BookModalProps {
-	title: TitleModal
+	titleBills: TitleModal
 	visible: boolean
 	handleOk: (e: React.MouseEvent) => void
 	handleCancel: (e: React.MouseEvent) => void
@@ -35,7 +35,7 @@ enum BILLSTAGS {
 }
 
 const BookModal: React.FC<BookModalProps> = (props) => {
-	const { title, visible, handleOk, handleCancel } = props
+	const { titleBills, visible, handleOk, handleCancel } = props
 	const { Title } = Typography
 	const [billsTags, setBillsTags] = useState(BILLSTAGS.RESTAURANT)
 	const [billsDate, setBillsDate] = useState(new Date())
@@ -45,7 +45,7 @@ const BookModal: React.FC<BookModalProps> = (props) => {
 	const submit = async (e: React.MouseEvent) => {
 		handleOk(e)
 		const params: IncomeRecordParams = {
-			billsName: title,
+			billsName: titleBills,
 			billsTags: billsTags,
 			billsDate: billsDate.toString(),
 			billsNum: billsNum.toString(),
@@ -78,7 +78,7 @@ const BookModal: React.FC<BookModalProps> = (props) => {
 			style={{
 				width: 500
 			}}
-			title={title}
+			title={titleBills}
 			visible={visible}
 			onOk={submit}
 			onCancel={handleCancel}

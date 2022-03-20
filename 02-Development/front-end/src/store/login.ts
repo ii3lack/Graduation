@@ -19,7 +19,7 @@ interface Action {
 
 // TODO: 登陆状态更改为false
 const initData = {
-	loginState: false,
+	loginState: true,
 	userEmailState: ''
 }
 

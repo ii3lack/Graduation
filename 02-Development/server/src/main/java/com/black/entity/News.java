@@ -14,14 +14,14 @@ import org.springframework.stereotype.Component;
 @Component
 @NoArgsConstructor
 @AllArgsConstructor
-@ConfigurationProperties(prefix = "bills")
+@ConfigurationProperties(prefix = "news")
 @PropertySource(value = { "classpath:application.yml" })
-public class Bills {
-    private Integer billsId;
-    private String billsName;
-    private String billsTags;
-    private String billsDate;
-    private String billsNum;
-    private String billsInfo;
-    private String userEmail;
+public class News {
+    private Integer newsId;
+    private String newsTitle;
+    private String newsAuth;
+    private String newsAvatar;
+    private String newsTips;
+    private String newsImg;
+    private String newsContent;
 }

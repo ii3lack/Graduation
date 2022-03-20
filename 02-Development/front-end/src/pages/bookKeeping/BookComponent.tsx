@@ -74,7 +74,7 @@ const BookComponent: React.FC<Props> = (props) => {
 					</div>
 				</div>
 				<BookModal
-					title={title}
+					titleBills={title}
 					visible={visible}
 					handleOk={handleOk}
 					handleCancel={handleCancel}
