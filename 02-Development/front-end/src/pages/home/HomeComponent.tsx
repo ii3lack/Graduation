@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import {
 	Skeleton,
 	Card,
@@ -9,16 +9,50 @@ import {
 	Space
 } from '@douyinfe/semi-ui'
 import { HomeState } from '@/store/homeState'
+import { queryNewsApi } from '@/services/api/news'
+import { changeResult } from '@/services/func/httpUtils'
 
 interface Props {
 	homeState: HomeState
+}
+
+interface NewsProps {
+	newsId: string
+	newsTitle: string
+	newsAuth: string
+	newsAvatar: string
+	newsTips: string
+	newsImg: string
+	newsContent: string
 }
 
 const HomeComponent: React.FC<Props> = (props) => {
 	const judge = props.homeState === 0 ? 'block' : 'none'
 	const { Text } = Typography
 	const [spacing, setSpacing] = useState(60)
+	const [loading, setLoading] = useState(false)
+	const [newsList, setNewsList] = useState([
+		{
+			newsId: '',
+			newsTitle: '',
+			newsAuth: '',
+			newsAvatar: '',
+			newsTips: '',
+			newsImg: '',
+			newsContent: ''
+		}
+	])
 	const { Meta } = Card
+
+	useEffect(() => {
+		const queryNews = async () => {
+			const result = changeResult(await queryNewsApi())
+			setLoading(true)
+			setNewsList(result.data.list)
+			console.log(newsList)
+		}
+		queryNews()
+	}, [loading])
 
 	const jsonData = [
 		{
@@ -55,30 +89,25 @@ const HomeComponent: React.FC<Props> = (props) => {
 				loading={false}
 			>
 				<CardGroup spacing={spacing}>
-					{jsonData.map((v, idx) => (
+					{newsList.map((v, idx) => (
 						<Card
 							key={idx}
 							style={{ maxWidth: 340 }}
 							title={
 								<Meta
-									title={v.title}
-									description={v.tips}
+									title={v.newsTitle}
+									description={v.newsTips}
 									avatar={
 										<Avatar
 											alt="Card meta img"
 											size="default"
-											src="https://lf3-static.bytednsdoc.com/obj/eden-cn/ptlz_zlp/ljhwZthlaukjlkulzlp/card-meta-avatar-docs-demo.jpg"
+											src={v.newsAvatar}
 										/>
 									}
 								/>
 							}
 							headerExtraContent={<Text link>更多</Text>}
-							cover={
-								<img
-									alt="example"
-									src="https://lf3-static.bytednsdoc.com/obj/eden-cn/ptlz_zlp/ljhwZthlaukjlkulzlp/root-web-sites/card-cover-docs-demo.jpeg"
-								/>
-							}
+							cover={<img alt="example" src={v.newsImg} />}
 							footerLine={true}
 							footerStyle={{
 								display: 'flex',
@@ -92,7 +121,7 @@ const HomeComponent: React.FC<Props> = (props) => {
 								</Space>
 							}
 						>
-							{v.info}
+							{v.newsTips}
 						</Card>
 					))}
 				</CardGroup>

@@ -8,7 +8,8 @@ logging:
 spring:
   application:
     name: server
-
+  mvc:
+    static-path-pattern: /images/**
   #数据库连接配置
   datasource:
     name: druidDataSource
@@ -52,7 +53,9 @@ spring:
         #启用重置数据功能
         reset-enable: true
         enabled: true
-
+  web:
+    resources:
+      static-locations: file:E://News/
 
 #mybatis的相关配置
 mybatis:
