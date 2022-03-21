@@ -1,4 +1,4 @@
-import React, { CSSProperties } from 'react'
+import React from 'react'
 import { Skeleton } from '@douyinfe/semi-ui'
 import { HomeState } from '@/store/homeState'
 

@@ -49,31 +49,10 @@ const HomeComponent: React.FC<Props> = (props) => {
 			const result = changeResult(await queryNewsApi())
 			setLoading(true)
 			setNewsList(result.data.list)
-			console.log(newsList)
+			// console.log(newsList
 		}
 		queryNews()
 	}, [loading])
-
-	const jsonData = [
-		{
-			title: '标题',
-			tips: '这是副标题',
-			img: '图片地址',
-			info: '描述'
-		},
-		{
-			title: '标题',
-			tips: '这是副标题',
-			img: '图片地址',
-			info: '描述'
-		},
-		{
-			title: '标题',
-			tips: '这是副标题',
-			img: '图片地址',
-			info: '描述'
-		}
-	]
 
 	return (
 		<div
@@ -106,7 +85,11 @@ const HomeComponent: React.FC<Props> = (props) => {
 									}
 								/>
 							}
-							headerExtraContent={<Text link>更多</Text>}
+							headerExtraContent={
+								<Text link={{ href: v.newsContent }}>
+									更多
+								</Text>
+							}
 							cover={<img alt="example" src={v.newsImg} />}
 							footerLine={true}
 							footerStyle={{
