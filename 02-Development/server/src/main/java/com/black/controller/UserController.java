@@ -1,6 +1,7 @@
 package com.black.controller;
 
 import com.black.entity.User;
+import com.black.service.UserInfoService;
 import com.black.service.UserService;
 import com.black.utils.Result;
 import io.swagger.annotations.Api;
@@ -17,12 +18,15 @@ import javax.annotation.Resource;
 public class UserController {
     @Resource
     private UserService userService;
+    @Resource
+    private UserInfoService userInfoService;
 
     @PostMapping("/registerUser")
     public Result registerUser(String userEmail, String userName, String userPassword) {
         User retUser = userService.judgeUser(userName);
         if (retUser == null) {
             userService.registerUser(userEmail, userName, userPassword);
+            userInfoService.registerUserInfo(userName, userEmail);
             return Result.ok().message("注册成功");
         } else {
             return Result.error().message("已有此用户");
