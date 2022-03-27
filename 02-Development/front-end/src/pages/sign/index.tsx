@@ -5,7 +5,6 @@ import '@assets/style/sign.scss'
 import { changeResult } from '@/services/func/httpUtils'
 import { useDispatch } from 'react-redux'
 import { loginAction } from '@/store/login'
-import { store } from '@/store'
 
 interface ResponseResult {
 	success: boolean

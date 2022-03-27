@@ -1,6 +1,8 @@
 import React from 'react'
 import { Skeleton } from '@douyinfe/semi-ui'
 import { HomeState } from '@/store/homeState'
+import ReactEcharts from 'echarts-for-react'
+import DataBars from './DataBars'
 
 interface Props {
 	homeState: HomeState
@@ -23,8 +25,7 @@ const DataComponent: React.FC<Props> = (props) => {
 				placeholder={<Skeleton.Paragraph rows={2} />}
 				loading={false}
 			>
-				<p>数据</p>
-				<p>Hi, Bytedance dance dance.</p>
+				<DataBars />
 			</Skeleton>
 		</div>
 	)

@@ -22,11 +22,7 @@ const KOIFooter: React.FC = () => {
 					alignItems: 'center'
 				}}
 			>
-				<IconBytedanceLogo
-					size="large"
-					style={{ marginRight: '8px' }}
-				/>
-				<span>Copyright © 2019 ByteDance. All Rights Reserved. </span>
+				<span>Copyright © 2022 沈俊豪，沈杨. All Rights Reserved. </span>
 			</span>
 			<span>
 				<span style={{ marginRight: '24px' }}>平台客服</span>

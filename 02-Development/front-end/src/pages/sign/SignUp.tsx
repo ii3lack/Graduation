@@ -3,8 +3,6 @@ import { Form, Toast, Button } from '@douyinfe/semi-ui'
 import { regesterApi, RegesterParams } from '@/services/api/user'
 import '@assets/style/sign.scss'
 import { changeResult } from '@/services/func/httpUtils'
-import { useDispatch } from 'react-redux'
-// import { loginAction } from '@/store/login'
 
 interface History {
 	history: any

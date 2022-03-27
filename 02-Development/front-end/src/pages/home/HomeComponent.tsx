@@ -54,6 +54,8 @@ const HomeComponent: React.FC<Props> = (props) => {
 		queryNews()
 	}, [loading])
 
+	const toNews = () => {}
+
 	return (
 		<div
 			style={{
@@ -71,7 +73,7 @@ const HomeComponent: React.FC<Props> = (props) => {
 					{newsList.map((v, idx) => (
 						<Card
 							key={idx}
-							style={{ maxWidth: 340 }}
+							style={{ maxWidth: 300 }}
 							title={
 								<Meta
 									title={v.newsTitle}
@@ -86,9 +88,7 @@ const HomeComponent: React.FC<Props> = (props) => {
 								/>
 							}
 							headerExtraContent={
-								<Text link={{ href: v.newsContent }}>
-									更多
-								</Text>
+								<Text link={{ href: v.newsContent }}>更多</Text>
 							}
 							cover={<img alt="example" src={v.newsImg} />}
 							footerLine={true}
@@ -98,7 +98,11 @@ const HomeComponent: React.FC<Props> = (props) => {
 							}}
 							footer={
 								<Space>
-									<Button theme="solid" type="primary">
+									<Button
+										theme="solid"
+										type="primary"
+										onClick={toNews}
+									>
 										开始阅读
 									</Button>
 								</Space>

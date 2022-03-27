@@ -15,6 +15,7 @@ interface Action {
 	type: string
 	login: boolean
 	email: string
+	name: string
 }
 
 // TODO: 登陆状态更改为false

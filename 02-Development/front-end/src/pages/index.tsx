@@ -35,7 +35,7 @@ const AppHome: React.FC<Props> = (props) => {
 		<Layout style={style}>
 			<KOISlider type={props.history} />
 			<Layout>
-				<KOIHeader />
+				<KOIHeader type={props.history}/>
 				<KOIContentContainer />
 				<KOIFooter />
 			</Layout>

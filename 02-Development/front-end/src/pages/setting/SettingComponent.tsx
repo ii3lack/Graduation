@@ -1,5 +1,5 @@
 import React from 'react'
-import { Skeleton } from '@douyinfe/semi-ui'
+import { Skeleton, List } from '@douyinfe/semi-ui'
 import { HomeState } from '@/store/homeState'
 
 interface Props {
@@ -8,6 +8,12 @@ interface Props {
 
 const SettingComponent: React.FC<Props> = (props) => {
 	const judge = props.homeState === 3 ? 'block' : 'none'
+	const data = [
+		'从明天起，做一个幸福的人',
+		'喂马，劈柴，周游世界',
+		'从明天起，关心粮食和蔬菜',
+		'退出登录'
+	]
 
 	return (
 		<div
@@ -23,8 +29,14 @@ const SettingComponent: React.FC<Props> = (props) => {
 				placeholder={<Skeleton.Paragraph rows={2} />}
 				loading={false}
 			>
-				<p>设置</p>
-				<p>Hi, Bytedance dance dance.</p>
+				<div style={{ marginRight: 16 }}>
+					<List
+						size="large"
+						bordered
+						dataSource={data}
+						renderItem={(item) => <List.Item>{item}</List.Item>}
+					/>
+				</div>
 			</Skeleton>
 		</div>
 	)

@@ -15,7 +15,6 @@ import {
 	toSettingAction
 } from '@/store/homeState'
 import { useDispatch } from 'react-redux'
-// import { browserHistory } from 'react-router'
 
 interface Props {
 	type: any
@@ -24,7 +23,6 @@ interface Props {
 const KOISlider: React.FC<Props> = (props) => {
 	const { Sider } = Layout
 	const dispatch = useDispatch()
-	// console.log(props)
 
 	const changePages = (action: Action) => {
 		const stateLogin = store.getState().loginWeb.loginState
@@ -62,13 +60,13 @@ const KOISlider: React.FC<Props> = (props) => {
 					},
 					{
 						itemKey: 'Histogram',
-						text: '理财可视化',
+						text: '财务可视化',
 						icon: <IconHistogram size="large" />,
 						onClick: () => changePages(toDataAction)
 					},
 					{
 						itemKey: 'Setting',
-						text: '设置',
+						text: '个人信息',
 						icon: <IconSetting size="large" />,
 						onClick: () => changePages(toSettingAction)
 					}
