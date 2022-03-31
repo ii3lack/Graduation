@@ -73,7 +73,7 @@ const HomeComponent: React.FC<Props> = (props) => {
 					{newsList.map((v, idx) => (
 						<Card
 							key={idx}
-							style={{ maxWidth: 300 }}
+							style={{ maxWidth: 340 }}
 							title={
 								<Meta
 									title={v.newsTitle}
@@ -96,17 +96,6 @@ const HomeComponent: React.FC<Props> = (props) => {
 								display: 'flex',
 								justifyContent: 'flex-end'
 							}}
-							footer={
-								<Space>
-									<Button
-										theme="solid"
-										type="primary"
-										onClick={toNews}
-									>
-										开始阅读
-									</Button>
-								</Space>
-							}
 						>
 							{v.newsTips}
 						</Card>
