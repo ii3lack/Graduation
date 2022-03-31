@@ -1,9 +1,11 @@
 {
   "name": "front-end",
   "version": "0.0.0",
+  "license": "ISC",
+  "homepage": "./",
   "scripts": {
     "dev": "vite --host",
-    "build": "tsc && vite build",
+    "build": "vite build",
     "preview": "vite preview"
   },
   "dependencies": {

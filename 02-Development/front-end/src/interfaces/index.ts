@@ -1,4 +1,4 @@
-import { ResponseData, MockOptions } from './httpApi'
+import { ResponseData } from './httpApi'
 import { LoginModel } from './models/user'
 
-export type { ResponseData, LoginModel, MockOptions }
+export type { ResponseData, LoginModel }

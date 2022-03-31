@@ -27,7 +27,7 @@ const DataComponent: React.FC<Props> = (props) => {
 				loading={false}
 			>
 				<DataBars />
-				<Text link={{ href: '/data' }}>数据大屏</Text>
+				<Text link={{ href: 'http://127.0.0.1:8082/' }}>数据大屏</Text>
 			</Skeleton>
 		</div>
 	)
