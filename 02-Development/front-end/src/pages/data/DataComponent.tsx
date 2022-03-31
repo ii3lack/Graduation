@@ -1,8 +1,8 @@
 import React from 'react'
-import { Skeleton } from '@douyinfe/semi-ui'
+import { Skeleton, Typography } from '@douyinfe/semi-ui'
 import { HomeState } from '@/store/homeState'
-import ReactEcharts from 'echarts-for-react'
 import DataBars from './DataBars'
+import { Link } from 'react-router-dom'
 
 interface Props {
 	homeState: HomeState
@@ -10,6 +10,7 @@ interface Props {
 
 const DataComponent: React.FC<Props> = (props) => {
 	const judge = props.homeState === 1 ? 'block' : 'none'
+	const { Text } = Typography
 
 	return (
 		<div
@@ -26,6 +27,7 @@ const DataComponent: React.FC<Props> = (props) => {
 				loading={false}
 			>
 				<DataBars />
+				<Text link={{ href: '/data' }}>数据大屏</Text>
 			</Skeleton>
 		</div>
 	)

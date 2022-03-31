@@ -9,7 +9,7 @@ const DataBars: React.FC = () => {
 	const getOption = (sales: number[], stores: number[]) => {
 		return {
 			title: {
-				text: '收支对比柱状图'
+				text: '本月收支对比柱状图'
 			},
 			tooltip: {},
 			legend: {
