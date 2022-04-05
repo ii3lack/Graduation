@@ -2,7 +2,7 @@ import React from 'react'
 import { Skeleton, Typography } from '@douyinfe/semi-ui'
 import { HomeState } from '@/store/homeState'
 import DataBars from './DataBars'
-import { Link } from 'react-router-dom'
+import DataTable from './DataTable'
 
 interface Props {
 	homeState: HomeState
@@ -18,7 +18,6 @@ const DataComponent: React.FC<Props> = (props) => {
 				borderRadius: '10px',
 				border: '1px solid var(--semi-color-border)',
 				display: judge,
-				height: '376px',
 				padding: '32px'
 			}}
 		>
@@ -27,6 +26,7 @@ const DataComponent: React.FC<Props> = (props) => {
 				loading={false}
 			>
 				<DataBars />
+				<DataTable />
 				<Text link={{ href: 'http://127.0.0.1:8082/' }}>数据大屏</Text>
 			</Skeleton>
 		</div>
