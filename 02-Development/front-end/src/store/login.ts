@@ -2,7 +2,7 @@ export const LOGINSUCCESS = 'LOGIN'
 export const EXITLOGIN = 'EXIT'
 
 export const loginAction = (email: string) => {
-	return { type: LOGINSUCCESS, login: false, email: email }
+	return { type: LOGINSUCCESS, login: true, email: email }
 }
 export const exitAction = { type: EXITLOGIN, login: false, email: '' }
 
@@ -20,7 +20,7 @@ interface Action {
 
 // TODO: 登陆状态更改为false
 const initData = {
-	loginState: true,
+	loginState: false,
 	userEmailState: 'test@qq.com'
 }
 

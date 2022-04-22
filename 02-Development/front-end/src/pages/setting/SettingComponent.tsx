@@ -16,9 +16,9 @@ interface Props {
 }
 
 const SettingComponent: React.FC<Props> = (props) => {
+	const judge = props.homeState === 3 ? 'flex' : 'none'
 	const email = store.getState().loginWeb.userEmailState
 
-	const judge = props.homeState === 3 ? 'block' : 'none'
 	const [url, setUrl] = useState(
 		'https://sf6-cdn-tos.douyinstatic.com/obj/eden-cn/ptlz_zlp/ljhwZthlaukjlkulzlp/root-web-sites/avatarDemo.jpeg'
 	)
@@ -53,7 +53,7 @@ const SettingComponent: React.FC<Props> = (props) => {
 			style={{
 				borderRadius: '10px',
 				border: '1px solid var(--semi-color-border)',
-				display: 'flex',
+				display: judge,
 				flexDirection: 'column',
 				alignItems: 'center',
 				justifyContent: 'start',
